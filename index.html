@@ -16,48 +16,49 @@
         <div class="container-fluid"></div>
         <div id="movies" class="row"></div>
         <div id="addMovies" class="col-6">
-            <form id="addMovie">
-                <div>
-                    <label for="movieName">
-                        Name of Movie:
-                    </label>
-                    <input type="text" id="movieName" name="Movie-Name">
-                    </input>
+            <form>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label" for="">Movie Name</label>
+                    <div class="col-8">
+                        <input id="" name="" type="text" class="form-control" placeholder="Movie Name">
+                    </div>
                 </div>
-                <div>
-                    <label for="year">
-                        Year:
-                    </label>
-                    <input type="text" id="year" name="year">
-                    </input>
+                <div class="form-group row">
+                    <label for="text" class="col-4 col-form-label">Year</label>
+                    <div class="col-8">
+                        <input id="text" name="text" type="text" class="form-control" placeholder="Year Released">
+                    </div>
                 </div>
-                <div>
-                    <label for="genre">
-                        Genre:
-                    </label>
-                    <input type="text" id="genre" name="genre">
+                <div class="form-group row">
+                    <label for="text1" class="col-4 col-form-label">Genre</label>
+                    <div class="col-8">
+                        <input id="text1" name="text1" type="text" class="form-control" placeholder="Genre">
+                    </div>
                 </div>
-                <div>
-                    <label for="quote">
-                        Best Quote:
-                    </label>
-                    <input type="text" id="quote" name="quote">
-                    </input>
+                <div class="form-group row">
+                    <label for="text2" class="col-4 col-form-label">Favorite Quote</label>
+                    <div class="col-8">
+                        <input id="text2" name="text2" type="text" class="form-control" placeholder="Favorite Quote">
+                    </div>
                 </div>
-                <div>
-                    <label for="cast">
-                        Cast:
-                    </label>
-                    <input type="text" id="cast" name="cast">
+                <div class="form-group row">
+                    <label for="text3" class="col-4 col-form-label">Actors</label>
+                    <div class="col-8">
+                        <input id="text3" name="text3" type="text" class="form-control" placeholder="Cast">
+                    </div>
                 </div>
-                <div>
-                    <label for="director">
-                        Director:
-                    </label>
-                    <input type="text" id="director" name="director">
+                <div class="form-group row">
+                    <label for="text4" class="col-4 col-form-label">Director</label>
+                    <div class="col-8">
+                        <input id="text4" name="text4" type="text" required="required" class="form-control" placeholder="Director">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-4 col-8">
+                        <button name="submit" type="submit" class="btn btn-primary">Suns in 4</button>
+                    </div>
                 </div>
             </form>
-                <button type="button" class="btn btn-info" form="addMovie" id="addMovieButton">Suns in 4</button>
 
         </div>
         <div id="edit" class="col-6"></div>

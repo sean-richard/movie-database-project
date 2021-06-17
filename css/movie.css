@@ -13,3 +13,7 @@ input {
 .card-text{
     flex-wrap: wrap;
 }
+
+.form-group{
+    margin: 10px;
+}
