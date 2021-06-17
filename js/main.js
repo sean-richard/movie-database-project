@@ -6,3 +6,7 @@ function load() {
     getAllMovies();
 }
 load();
+
+function domSomething(data){
+    console.log(data);
+}
