@@ -9,11 +9,10 @@ load();
 
 function domSomething(data) {
     $('#movies').html('');
-    addMovie(data);
-
+    showMovie(data);
 }
 
-function addMovie(data) {
+function showMovie(data) {
     for (let i = 0; i < data.length; i++) {
         let poster = data[i].poster;
         let movieName = data[i].title;

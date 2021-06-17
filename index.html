@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -17,38 +17,48 @@
         <div id="movies" class="row"></div>
         <div id="addMovies" class="col-6">
             <form id="addMovie">
-                <label for="movieName">
-                    Name of Movie:
-                </label>
-                <input type="text" name="Movie-Name">
-                </input>
-                <label for="year">
-                    Year:
-                </label>
-                <input type="text" name="year">
-                </input>
-                <label for="genre">
-                    Genre:
-                </label>
-                <input type="text" name="genre">
-                </input>
-                <label for="quote">
-                    Best Quote:
-                </label>
-                <input type="text" name="quote">
-                </input>
-                <label for="Cast">
-                    Cast:
-                </label>
-                <input type="text" name="cast">
-                </input>
-                <label for="director">
-                    Director:
-                </label>
-                <input type="text" name="director">
-                </input>
+                <div>
+                    <label for="movieName">
+                        Name of Movie:
+                    </label>
+                    <input type="text" id="movieName" name="Movie-Name">
+                    </input>
+                </div>
+                <div>
+                    <label for="year">
+                        Year:
+                    </label>
+                    <input type="text" id="year" name="year">
+                    </input>
+                </div>
+                <div>
+                    <label for="genre">
+                        Genre:
+                    </label>
+                    <input type="text" id="genre" name="genre">
+                </div>
+                <div>
+                    <label for="quote">
+                        Best Quote:
+                    </label>
+                    <input type="text" id="quote" name="quote">
+                    </input>
+                </div>
+                <div>
+                    <label for="cast">
+                        Cast:
+                    </label>
+                    <input type="text" id="cast" name="cast">
+                </div>
+                <div>
+                    <label for="director">
+                        Director:
+                    </label>
+                    <input type="text" id="director" name="director">
+                </div>
             </form>
-            <button type="button" class="btn btn-info" form="addMovie">Suns in 4</button>
+                <button type="button" class="btn btn-info" form="addMovie" id="addMovieButton">Suns in 4</button>
+
         </div>
         <div id="edit" class="col-6"></div>
         <div id="loading"></div>
