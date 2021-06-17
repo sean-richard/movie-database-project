@@ -5,15 +5,38 @@ function load() {
     //     $("#loading").html(`<img src="/assets/sunsin4.gif">`);
     getAllMovies();
 }
-
 load();
 
 function domSomething(data) {
     $('#movies').html('');
-    showMovie(data);
+    renderMovies(data);
 }
 
-function showMovie(data) {
+function addMovies() {
+    // don't submit the form, we just want to update the data
+    let title = document.querySelector('#movieName').value;
+    let actor = document.querySelector('#year').value;
+    let genre = document.querySelector('#genre').value;
+    let director = document.querySelector('#quote').value;
+    let quote = document.querySelector('#cast').value;
+    let year = document.querySelector('#director').value;
+    let poster = document.querySelector('#poster').value;
+
+    let newMovie = {
+        title: title,
+        year: year,
+        genre: genre,
+        director: director,
+        quote: quote,
+        actor: actor,
+        // poster:,
+    };
+    console.log(newMovie);
+    postMovies(newMovie);
+}
+
+
+function renderMovies(data) {
     for (let i = 0; i < data.length; i++) {
         let poster = data[i].poster;
         let movieName = data[i].title;
