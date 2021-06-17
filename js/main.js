@@ -7,6 +7,34 @@ function load() {
 }
 load();
 
-function domSomething(data){
-    console.log(data);
+function domSomething(data) {
+    $('#movies').html('');
+    addMovie(data);
+
+}
+
+function addMovie(data) {
+    for (let i = 0; i < data.length; i++) {
+        let poster = data[i].poster;
+        let movieName = data[i].title;
+        let genre = data[i].genre;
+        let director = data[i].director;
+        let actors = data[i].actors;
+        let year = data[i].year;
+        let quote = data[i].quote;
+
+
+        $('#movies').append(`
+    <div class="card col-4">
+    <p class = "card-text text-break"><img src="${poster}"><br>
+    ${movieName}<br>
+    ${genre}<br>
+    ${director}<br>
+    ${actors}<br>
+    "${quote}"<br>
+    ${year}
+</p>
+</div>
+    `)
+    }
 }
