@@ -46,15 +46,15 @@ li:nth-child(odd){
     right: 15px;
 }
 
-/*.btn-circle{*/
-/*    visibility: hidden;*/
-/*    opacity: 0;*/
-/*    transition: visibility 0s, opacity 0.5s linear;*/
-/*}*/
-/*.btn-circle:hover {*/
-/*    visibility:visible;*/
-/*    opacity: 1;*/
-/*}*/
+.btn-circle{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+.card:hover .btn-circle{
+    visibility:visible;
+    opacity: 1;
+}
 
 .card-header {
     text-align: center;
