@@ -33,6 +33,32 @@ li:nth-child(odd){
     list-style-type: none;
 }
 
+.btn-circle.btn-sm {
+    width: 30px;
+    height: 30px;
+    /*padding: 6px 0px;*/
+    border-radius: 15px;
+    border-color: white;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    top: 15px;
+    right: 15px;
+}
+
+/*.btn-circle{*/
+/*    visibility: hidden;*/
+/*    opacity: 0;*/
+/*    transition: visibility 0s, opacity 0.5s linear;*/
+/*}*/
+/*.btn-circle:hover {*/
+/*    visibility:visible;*/
+/*    opacity: 1;*/
+/*}*/
+
+.card-header {
+    text-align: center;
+}
 /*$boxSpacing: 23px;*/
 /*$gridSize: 200px;*/
 /*$cornerRadius: $gridSize/2.1;*/
