@@ -26,3 +26,21 @@ function postMovies(data) {
 
 }
 
+
+function deleteMovie(id) {
+    fetch(`https://wide-celestial-board.glitch.me/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(id),
+    })
+        .then(response => response.json())
+        .then(
+            getAllMovies
+        )
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+}

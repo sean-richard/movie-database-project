@@ -45,6 +45,7 @@ function renderMovies(data) {
         let actors = data[i].actors;
         let year = data[i].year;
         let quote = data[i].quote;
+        let id = data[i].id;
 
 
 
@@ -52,18 +53,20 @@ function renderMovies(data) {
         $('#movies').append(`
 
      <div id="editBtn" class="card  col-4 mx-4 mb-4">
+           <div class="circle-btn">
+                <button data-id="${id}" name="edit" type="submit" class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="deleteBtn(this)">X</button>
+</div>
     <img src="${poster}" class="card-img-top-fluid">
     <div class="card-block">
-    <h5 class="card-header" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">${movieName}</h5><br>
+    <h5 class="card-header" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">${movieName} (${year})</h5><br>
     </div>
     <ul class="list-group list-group-flush"
     <li  class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">Genre: ${genre}</li>
     <li  class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">Director: ${director}</li>
     <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >Cast: ${actors}</li>
     <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >"${quote}"</li>
-    <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >Year: ${year}</li>
+    <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >Rating </li>
     </ul>
-<!--    <button name="edit" type="submit" class="btn btn-primary" onclick="makeEdit()">Edit</button>-->
 </div>
 
 `)
@@ -72,9 +75,20 @@ function renderMovies(data) {
 
 function makeEdit(e){
     e.contentEditable = true;
+
     //Ajax POST request here, save e.html
 }
 
 function makeReadOnly(e){
     e.contentEditable = false;
 }
+
+function deleteBtn(e){
+    let movieId = e.getAttribute('data-id');
+    console.log(movieId);
+    deleteMovie(movieId);
+}
+
+// $(document).ready(function() {
+//     $(.deleteBtn)
+// }
