@@ -47,24 +47,34 @@ function renderMovies(data) {
         let quote = data[i].quote;
 
 
+
+
         $('#movies').append(`
 
-
-
-    <div class="card  col-4 mx-4 mb-4">
+     <div id="editBtn" class="card  col-4 mx-4 mb-4">
     <img src="${poster}" class="card-img-top-fluid">
     <div class="card-block">
-    <h5 class="card-header">${movieName}</h5><br>
+    <h5 class="card-header" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">${movieName}</h5><br>
     </div>
     <ul class="list-group list-group-flush"
-    <li class="list-group-item">Genre: ${genre}</li>
-    <li class="list-group-item">Director: ${director}</li>
-    <li class="list-group-item">Cast: ${actors}</li>
-    <li class="list-group-item">"${quote}"</li>
-    <li class="list-group-item">Year: ${year}</li>
+    <li  class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">Genre: ${genre}</li>
+    <li  class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">Director: ${director}</li>
+    <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >Cast: ${actors}</li>
+    <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >"${quote}"</li>
+    <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >Year: ${year}</li>
     </ul>
+<!--    <button name="edit" type="submit" class="btn btn-primary" onclick="makeEdit()">Edit</button>-->
 </div>
 
 `)
     }
+}
+
+function makeEdit(e){
+    e.contentEditable = true;
+    //Ajax POST request here, save e.html
+}
+
+function makeReadOnly(e){
+    e.contentEditable = false;
 }
