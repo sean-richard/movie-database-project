@@ -1,11 +1,52 @@
-function load() {
-    alert("Hold Up");
-    // $(document).ready(function(e) {
-    // e.preventDefault()
-    //     $("#loading").html(`<img src="/assets/sunsin4.gif">`);
-    getAllMovies();
-}
-load();
+setTimeout(() => {
+    getAllMovies()
+    }, 1200);
+
+setTimeout(() => {
+    $('#addMovies').append(`<form>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label" for="movieName">Movie Name</label>
+                    <div class="col-8">
+                        <input id="movieName" name="movieName" type="text" class="form-control" placeholder="Movie Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="year" class="col-4 col-form-label">Year</label>
+                    <div class="col-8">
+                        <input id="year" name="year" type="text" class="form-control" placeholder="Year Released">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="genre" class="col-4 col-form-label">Genre</label>
+                    <div class="col-8">
+                        <input id="genre" name="genre" type="text" class="form-control" placeholder="Genre">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="quote" class="col-4 col-form-label">Favorite Quote</label>
+                    <div class="col-8">
+                        <input id="quote" name="quote" type="text" class="form-control" placeholder="Favorite Quote">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="actors" class="col-4 col-form-label">Actors</label>
+                    <div class="col-8">
+                        <input id="actors" name="actors" type="text" class="form-control" placeholder="Cast">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="director" class="col-4 col-form-label">Director</label>
+                    <div class="col-8">
+                        <input id="director" name="text4" type="text" required="required" class="form-control" placeholder="Director">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-4 col-8">
+                        <button name="submit" type="button" class="btn btn-primary" onclick="addMovies()">Suns in 4</button>
+                    </div>
+                </div>
+            </form>`)
+}, 1400);
 
 function domSomething(data) {
     $('#movies').html('');
@@ -37,6 +78,7 @@ function addMovies() {
 
 
 function renderMovies(data) {
+    $('.giffy').css('display', 'none');
     for (let i = 0; i < data.length; i++) {
         let poster = data[i].poster;
         let movieName = data[i].title;
@@ -48,13 +90,11 @@ function renderMovies(data) {
         let id = data[i].id;
 
 
-
-
         $('#movies').append(`
 
      <div id="editBtn" class="card  col-4 mx-4 mb-4">
            <div class="circle-btn">
-                <button data-id="${id}" name="edit" type="submit" class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="deleteBtn(event)">X</button>
+                <button data-id="${id}" name="edit" type="submit" class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="promptMe()">X</button>
 </div>
     <img src="${poster}" class="card-img-top-fluid">
     <div class="card-block">
@@ -73,33 +113,42 @@ function renderMovies(data) {
     }
 }
 
-function makeEdit(e){
+function promptMe(){
+    let userKnow = confirm("Are you sure you want to delete this movie?");
+    if (userKnow === true){
+        deleteBtn(event);
+    }else{
+        return alert("Operation canceled");
+    }
+}
+
+function makeEdit(e) {
     e.target.contentEditable = true;
 
     //Ajax POST request here, save e.html
 }
 
-function makeReadOnly(e){
+function makeReadOnly(e) {
     e.target.contentEditable = false;
-   let changeData = e.target.innerText.split(':');
-   if (changeData.length > 1){
-       changeData = changeData[1]
-   }else{
-       changeData = changeData[0];
-   }
-   let targetAtr = e.target.getAttribute('data-atr');
-   let createObj = {};
-   createObj[targetAtr] = changeData;
-   let changedId = e.target.getAttribute('data-id');
-        editMovie(createObj, changedId);
+    let changeData = e.target.innerText.split(':');
+    if (changeData.length > 1) {
+        changeData = changeData[1]
+    } else {
+        changeData = changeData[0];
+    }
+    let targetAtr = e.target.getAttribute('data-atr');
+    let createObj = {};
+    createObj[targetAtr] = changeData;
+    let changedId = e.target.getAttribute('data-id');
+    editMovie(createObj, changedId);
 }
 
-function deleteBtn(e){
+function deleteBtn(e) {
     let movieId = e.target.getAttribute('data-id');
     console.log(movieId);
     deleteMovie(movieId);
 }
 
-// $(document).ready(function() {
-//     $(.deleteBtn)
-// }
+
+
+
