@@ -15,12 +15,12 @@ function domSomething(data) {
 function addMovies() {
     // don't submit the form, we just want to update the data
     let title = document.querySelector('#movieName').value;
-    let actor = document.querySelector('#year').value;
+    let actor = document.querySelector('#actors').value;
     let genre = document.querySelector('#genre').value;
-    let director = document.querySelector('#quote').value;
-    let quote = document.querySelector('#cast').value;
-    let year = document.querySelector('#director').value;
-    let poster = document.querySelector('#poster').value;
+    let director = document.querySelector('#director').value;
+    let quote = document.querySelector('#quote').value;
+    let year = document.querySelector('#year').value;
+    // let poster = document.querySelector('#poster').value;
 
     let newMovie = {
         title: title,
@@ -54,11 +54,11 @@ function renderMovies(data) {
 
      <div id="editBtn" class="card  col-4 mx-4 mb-4">
            <div class="circle-btn">
-                <button data-id="${id}" name="edit" type="submit" class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="deleteBtn(this)">X</button>
+                <button data-id="${id}" name="edit" type="submit" class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="deleteBtn(event)">X</button>
 </div>
     <img src="${poster}" class="card-img-top-fluid">
     <div class="card-block">
-    <h5 class="card-header" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">${movieName} (${year})</h5><br>
+    <h5 class="card-header" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">${movieName} (${year})</h5><br>
     </div>
     <ul class="list-group list-group-flush"
     <li  class="group-item" data-id="${id}" data-atr="genre" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">Genre: ${genre}</li>
