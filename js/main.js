@@ -61,11 +61,11 @@ function renderMovies(data) {
     <h5 class="card-header" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">${movieName} (${year})</h5><br>
     </div>
     <ul class="list-group list-group-flush"
-    <li  class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">Genre: ${genre}</li>
-    <li  class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)">Director: ${director}</li>
-    <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >Cast: ${actors}</li>
-    <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >"${quote}"</li>
-    <li class="group-item" ondblclick="makeEdit(this)" onblur="makeReadOnly(this)" >Rating </li>
+    <li  class="group-item" data-id="${id}" data-atr="genre" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">Genre: ${genre}</li>
+    <li  class="group-item" data-id="${id}" data-atr="director" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">Director: ${director}</li>
+    <li class="group-item" data-id="${id}" data-atr="actors" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)" >Cast: ${actors}</li>
+    <li class="group-item" data-id="${id}" data-atr="quote" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)" >"${quote}"</li>
+    <li class="group-item" data-id="${id}" data-atr="rating" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)" >Rating </li>
     </ul>
 </div>
 
@@ -74,17 +74,28 @@ function renderMovies(data) {
 }
 
 function makeEdit(e){
-    e.contentEditable = true;
+    e.target.contentEditable = true;
 
     //Ajax POST request here, save e.html
 }
 
 function makeReadOnly(e){
-    e.contentEditable = false;
+    e.target.contentEditable = false;
+   let changeData = e.target.innerText.split(':');
+   if (changeData.length > 1){
+       changeData = changeData[1]
+   }else{
+       changeData = changeData[0];
+   }
+   let targetAtr = e.target.getAttribute('data-atr');
+   let createObj = {};
+   createObj[targetAtr] = changeData;
+   let changedId = e.target.getAttribute('data-id');
+        editMovie(createObj, changedId);
 }
 
 function deleteBtn(e){
-    let movieId = e.getAttribute('data-id');
+    let movieId = e.target.getAttribute('data-id');
     console.log(movieId);
     deleteMovie(movieId);
 }

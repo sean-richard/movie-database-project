@@ -28,16 +28,28 @@ function postMovies(data) {
 
 
 function deleteMovie(id) {
-    fetch(`https://wide-celestial-board.glitch.me/${id}`, {
+    fetch(`https://wide-celestial-board.glitch.me/movies/${id}`, {
         method: 'DELETE',
+    })
+        .then(_ =>
+            getAllMovies()
+        )
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+}
+
+function editMovie(data, id) {
+    fetch(`https://wide-celestial-board.glitch.me/movies/${id}`, {
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(id),
+        body: JSON.stringify(data),
     })
-        .then(response => response.json())
-        .then(
-            getAllMovies
+        .then(_ =>
+            getAllMovies()
         )
         .catch((error) => {
             console.error('Error:', error);
