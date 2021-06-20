@@ -1,16 +1,16 @@
 setTimeout(() => {
     getAllMovies()
-    }, 1200);
+}, 1200);
 
 setTimeout(() => {
-    $('#addMovies').append(`<form>
+    $('#addMovies').append(`<form style="width: 75%;">
                 <div class="form-group row">
                     <label class="col-4 col-form-label" for="movieName">Movie Name</label>
                     <div class="col-8">
                         <input id="movieName" name="movieName" type="text" class="form-control" placeholder="Movie Name">
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row"> 
                     <label for="year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
                         <input id="year" name="year" type="text" class="form-control" placeholder="Year Released">
@@ -91,33 +91,46 @@ function renderMovies(data) {
 
 
         $('#movies').append(`
-
-     <div id="editBtn" class="card  col-4 mx-4 mb-4">
-           <div class="circle-btn">
-                <button data-id="${id}" name="edit" type="submit" class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="promptMe()">X</button>
-</div>
-    <img src="${poster}" class="card-img-top-fluid">
-    <div class="card-block">
-    <h5 class="card-header" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">${movieName} (${year})</h5><br>
-    </div>
-    <ul class="list-group list-group-flush"
-    <li  class="group-item" data-id="${id}" data-atr="genre" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">Genre: ${genre}</li>
-    <li  class="group-item" data-id="${id}" data-atr="director" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">Director: ${director}</li>
-    <li class="group-item" data-id="${id}" data-atr="actors" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)" >Cast: ${actors}</li>
-    <li class="group-item" data-id="${id}" data-atr="quote" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)" >"${quote}"</li>
-    <li class="group-item" data-id="${id}" data-atr="rating" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)" >Rating </li>
-    </ul>
-</div>
-
+            <div class="card col-lg-4">
+                <div class="card columns">
+                    <div class="circle-btn">
+                        <button data-id="${id}" name="edit" type="submit"
+                                class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="promptMe()">X
+                        </button>
+                    </div> <!--delete button-->
+                    <img src="${poster}" class="card-img-top-fluid">
+<!--                    <div class="card-block">-->
+                        <h5 class="card-header" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">${movieName}
+                            (${year})</h5><br>
+<!--                    </div> &lt;!&ndash;card block&ndash;&gt;-->
+                    <ul class="list-group list-group-flush">
+                    <li class="group-item" data-id="${id}" data-atr="genre" ondblclick="makeEdit(event)"
+                        onblur="makeReadOnly(event)">Genre: ${genre}
+                    </li>
+                    <li class="group-item" data-id="${id}" data-atr="director" ondblclick="makeEdit(event)"
+                        onblur="makeReadOnly(event)">Director: ${director}
+                    </li>
+                    <li class="group-item" data-id="${id}" data-atr="actors" ondblclick="makeEdit(event)"
+                        onblur="makeReadOnly(event)">Cast: ${actors}
+                    </li>
+                    <li class="group-item" data-id="${id}" data-atr="quote" ondblclick="makeEdit(event)"
+                        onblur="makeReadOnly(event)">"${quote}"
+                    </li>
+                    <li class="group-item" data-id="${id}" data-atr="rating" ondblclick="makeEdit(event)"
+                        onblur="makeReadOnly(event)">Rating
+                    </li>
+                    </ul>
+                </div> <!--card columns-->
+            </div> <!--div container -->
 `)
     }
 }
 
-function promptMe(){
+function promptMe() {
     let userKnow = confirm("Are you sure you want to delete this movie?");
-    if (userKnow === true){
+    if (userKnow === true) {
         deleteBtn(event);
-    }else{
+    } else {
         return alert("Operation canceled");
     }
 }
