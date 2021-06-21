@@ -48,7 +48,7 @@ setTimeout(() => {
                 </div>
                 <div class="form-group row">
                     <div class="offset-4 col-8">
-                        <button name="submit" type="button" class="btn btn-primary" onclick="addMovies()">Suns in 4</button>
+                        <button name="submit" type="button" class="btn btn-primary" onclick="addMovies()">Add a Movie</button>
                     </div>
                 </div>
             </form>`)
