@@ -56,3 +56,13 @@ function editMovie(data, id) {
         });
 
 }
+
+function moviePoster(movieTitle) {
+    fetch(`http://www.omdbapi.com/?t=${movieTitle}&apikey=994a3469`)
+        .then(response => response.json())
+        .then(data => {
+            return (data.Poster);
+
+        })
+        .catch(error => console.error(error));
+}

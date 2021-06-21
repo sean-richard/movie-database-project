@@ -59,6 +59,7 @@ function domSomething(data) {
     renderMovies(data);
 }
 
+
 function addMovies() {
     // don't submit the form, we just want to update the data
     let title = document.querySelector('#movieName').value;
@@ -67,7 +68,10 @@ function addMovies() {
     let director = document.querySelector('#director').value;
     let quote = document.querySelector('#quote').value;
     let year = document.querySelector('#year').value;
-    let poster = document.querySelector('#poster').value;
+
+    let poster = moviePoster(title);
+    console.log(moviePoster(title));
+
 
     let newMovie = {
         title: title,
@@ -80,7 +84,10 @@ function addMovies() {
     };
     console.log(newMovie);
     postMovies(newMovie);
+
 }
+
+
 
 
 function renderMovies(data) {
