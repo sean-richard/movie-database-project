@@ -3,7 +3,7 @@ setTimeout(() => {
 }, 1200);
 
 setTimeout(() => {
-    $('#addMovies').append(`<form style="width: 75%;">
+    $('#addMovies').append(`<form style="width: 75%; margin-top: 10em;">
                 <div class="form-group row">
                     <label class="col-4 col-form-label" for="movieName">Movie Name</label>
                     <div class="col-8">
@@ -14,6 +14,12 @@ setTimeout(() => {
                     <label for="year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
                         <input id="year" name="year" type="text" class="form-control" placeholder="Year Released">
+                    </div>
+                </div>
+                <div class="form-group row"> 
+                    <label for="poster" class="col-4 col-form-label">Poster</label>
+                    <div class="col-8">
+                        <input id="poster" name="poster" type="text" class="form-control" placeholder="Movie Poster">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -61,7 +67,7 @@ function addMovies() {
     let director = document.querySelector('#director').value;
     let quote = document.querySelector('#quote').value;
     let year = document.querySelector('#year').value;
-    // let poster = document.querySelector('#poster').value;
+    let poster = document.querySelector('#poster').value;
 
     let newMovie = {
         title: title,
@@ -70,7 +76,7 @@ function addMovies() {
         director: director,
         quote: quote,
         actor: actor,
-        // poster:,
+        poster: poster,
     };
     console.log(newMovie);
     postMovies(newMovie);
@@ -91,18 +97,17 @@ function renderMovies(data) {
 
 
         $('#movies').append(`
-            <div class="card col-lg-4">
-                <div class="card columns">
+            <div class="card h-100 movie-card">
                     <div class="circle-btn">
                         <button data-id="${id}" name="edit" type="submit"
                                 class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="promptMe()">X
                         </button>
                     </div> <!--delete button-->
-                    <img src="${poster}" class="card-img-top-fluid">
-<!--                    <div class="card-block">-->
+                    <img src="${poster}" class="card-img-top-fluid"  ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">
+                    <div class="card-body">
                         <h5 class="card-header" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">${movieName}
                             (${year})</h5><br>
-<!--                    </div> &lt;!&ndash;card block&ndash;&gt;-->
+                    
                     <ul class="list-group list-group-flush">
                     <li class="group-item" data-id="${id}" data-atr="genre" ondblclick="makeEdit(event)"
                         onblur="makeReadOnly(event)">Genre: ${genre}
@@ -120,8 +125,9 @@ function renderMovies(data) {
                         onblur="makeReadOnly(event)">Rating
                     </li>
                     </ul>
-                </div> <!--card columns-->
-            </div> <!--div container -->
+            </div> <!--card block-->
+            </div> <!--card -->
+           
 `)
     }
 }
@@ -137,7 +143,7 @@ function promptMe() {
 
 function makeEdit(e) {
     e.target.contentEditable = true;
-
+    e.style.border = "1px solid #000"
     //Ajax POST request here, save e.html
 }
 
