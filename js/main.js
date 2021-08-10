@@ -69,7 +69,7 @@ function addMovies() {
     let quote = document.querySelector('#quote').value;
     let year = document.querySelector('#year').value;
 
-    let poster = moviePoster(title);
+    let poster = moviePoster(title).then(result => result);
     console.log(moviePoster(title));
 
 
@@ -109,7 +109,7 @@ function renderMovies(data) {
                         <button data-id="${id}" name="edit" type="submit"
                                 class="btn btn-danger btn-circle btn-sm deleteBtn" onclick="promptMe()">X
                         </button>
-                    </div> <!--delete button-->
+                    </div>
                     <img src="${poster}" class="card-img-top-fluid"  ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">
                     <div class="card-body">
                         <h5 class="card-header" ondblclick="makeEdit(event)" onblur="makeReadOnly(event)">${movieName}
@@ -132,8 +132,8 @@ function renderMovies(data) {
                         onblur="makeReadOnly(event)">Rating
                     </li>
                     </ul>
-            </div> <!--card block-->
-            </div> <!--card -->
+            </div> 
+            </div> 
            
 `)
     }

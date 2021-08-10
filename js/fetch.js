@@ -1,5 +1,5 @@
 function getAllMovies(){
-    fetch(`https://wide-celestial-board.glitch.me/movies`)
+    fetch(`http://localhost:8080/movies`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -9,7 +9,7 @@ function getAllMovies(){
 }
 
 function postMovies(data) {
-    fetch('https://wide-celestial-board.glitch.me/movies', {
+    fetch('http://localhost:8080/movies', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ function postMovies(data) {
 
 
 function deleteMovie(id) {
-    fetch(`https://wide-celestial-board.glitch.me/movies/${id}`, {
+    fetch(`http://localhost:8080/movies`, {
         method: 'DELETE',
     })
         .then(_ =>
@@ -41,7 +41,7 @@ function deleteMovie(id) {
 }
 
 function editMovie(data, id) {
-    fetch(`https://wide-celestial-board.glitch.me/movies/${id}`, {
+    fetch(`http://localhost:8080/movies`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -61,6 +61,7 @@ function moviePoster(movieTitle) {
     fetch(`http://www.omdbapi.com/?t=${movieTitle}&apikey=994a3469`)
         .then(response => response.json())
         .then(data => {
+            console.log(data.Poster);
             return (data.Poster);
 
         })
